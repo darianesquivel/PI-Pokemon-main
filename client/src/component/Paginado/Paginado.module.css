@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  gap: 20px;
+}
+
+.listItem {
+  list-style: none;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  color: rgb(16, 145, 231);
+}
