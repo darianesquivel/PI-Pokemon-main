@@ -17,6 +17,7 @@ export default function SearchBar() {
   function handleSubmit(e) {
     console.log("se ejecuto handleSubmit con name ", name);
     dispatch(searchByName(name));
+    setName("");
   }
 
   return (
@@ -26,6 +27,7 @@ export default function SearchBar() {
         className={style.inputSearch}
         type="text"
         placeholder="search..."
+        value={name}
       />
       <button
         onClick={(e) => handleSubmit(e)}

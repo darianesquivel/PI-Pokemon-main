@@ -37,6 +37,7 @@ export default function PokemonCreate() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    console.log(input);
     setError(
       validate({
         ...input,

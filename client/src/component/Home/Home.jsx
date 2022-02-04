@@ -15,12 +15,12 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import Paginado from "../Paginado/Paginado";
+import gif from "./pokemonnotfound.gif";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
   const allPokemonsFilter = useSelector((state) => state.filter);
-  // const allTypes = useSelector((state) => state.allTypes);
   const [order, setOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage, setPokemonPerPage] = useState(12);
@@ -80,6 +80,11 @@ export default function Home() {
     dispatch(orderByStrange(e.target.value));
     setOrder(`Ordenado ${e.target.value}`);
     setCurrentPage(1);
+  }
+
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getPokemons());
   }
 
   return (
@@ -161,7 +166,15 @@ export default function Home() {
       <div className={style.cardsContainer}>
         {currentPokemons === "not found" ? (
           <div>
-            <h2>POKEMON NO ENCONTRADO</h2>
+            <img src={gif} alt="" width="100px" />
+            <h2>POKEMON NOT FOUND</h2>
+            <button
+              onClick={(e) => handleClick(e)}
+              className={style.buttonSearch}
+              type="submit"
+            >
+              Recargar
+            </button>
           </div>
         ) : currentPokemons.length < 1 ? (
           <Loading />
