@@ -67,3 +67,35 @@ export function searchByName(payload) {
     }
   };
 }
+
+export function postPokemon(payload) {
+  return async function (dispatch) {
+    const pokemonCreate = axios.post("http://localhost:3001/pokemon/", payload);
+    console.log("soy pokemon create", pokemonCreate);
+    return pokemonCreate;
+  };
+}
+
+export function getDetail(id) {
+  return async function (dispatch) {
+    try {
+      var pokemonDetail = await axios.get(
+        `http://localhost:3001/pokemon/${id}`
+      );
+      console.log("EL POKEMON LLEGO A ACTIONS ", pokemonDetail.data);
+      return dispatch({
+        type: "GET_DETAIL",
+        payload: pokemonDetail.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function clearDetail() {
+  return {
+    type: "CLEAR_DETAIL",
+    payload: [],
+  };
+}

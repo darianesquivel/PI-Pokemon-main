@@ -157,15 +157,19 @@ export default function Home() {
         allPokemons={allPokemons.length}
         paginado={paginado}
       />
-
+      {console.log("ROMPE SI NO ENCUENTRA PERSONAJE ", currentPokemons)}
       <div className={style.cardsContainer}>
-        {currentPokemons.length < 1 ? (
+        {currentPokemons === "not found" ? (
+          <div>
+            <h2>POKEMON NO ENCONTRADO</h2>
+          </div>
+        ) : currentPokemons.length < 1 ? (
           <Loading />
         ) : (
           currentPokemons?.map((p, i) => {
             return (
               <div>
-                <Link className={style.link} to={`/home/${p.id}`}>
+                <Link className={style.link} to={`/pokemon/${p.id}`}>
                   <Card
                     key={i}
                     name={p.name}

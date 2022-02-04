@@ -1,0 +1,72 @@
+.createContainer {
+  width: 100%;
+  background-color: black;
+  font-family: "Press Start 2P", cursive;
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputCreate {
+  width: 400px;
+  height: 50px;
+  border: 3px dashed white;
+  background-color: black;
+  margin-right: 10px;
+  color: white;
+  font-size: 1rem;
+  font-family: "Press Start 2P", cursive;
+  margin-bottom: 15px;
+}
+
+.inputCreate::-webkit-input-placeholder {
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 1rem;
+}
+
+.buttonCreate {
+  border: none;
+  height: 53px;
+  font-family: "Press Start 2P", cursive;
+  background-color: white;
+}
+
+.buttonCreate:hover {
+  background-color: rgb(16, 145, 231);
+}
+
+.select {
+  width: 400px;
+  height: 50px;
+  border: 3px dashed white;
+  background-color: black;
+  margin-right: 10px;
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.optionSelect {
+  font-family: "Press Start 2P", cursive;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.form {
+  width: 400px;
+  text-align: center;
+}
+
+.error {
+  color: red;
+}

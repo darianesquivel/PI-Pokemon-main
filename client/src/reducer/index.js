@@ -3,6 +3,7 @@ const initialState = {
   allPokemons: [],
   allTypes: [],
   filter: [],
+  detail: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -105,6 +106,24 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         pokemons: action.payload,
+      };
+
+    case "POST_POKEMON":
+      return {
+        ...state,
+      };
+
+    case "GET_DETAIL":
+      console.log("EL POKEMON LLEGO AL REDUCER ", action.payload);
+      return {
+        ...state,
+        detail: action.payload,
+      };
+
+    case "CLEAR_DETAIL":
+      return {
+        ...state,
+        detail: action.payload,
       };
 
     default:

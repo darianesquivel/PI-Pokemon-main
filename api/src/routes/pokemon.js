@@ -34,7 +34,7 @@ router.get("/", async (req, res, next) => {
     if (pokemonByName.length > 0) {
       res.send(pokemonByName);
     } else {
-      res.send("Pokemon no encontrado");
+      res.send("not found");
     }
   }
 });
