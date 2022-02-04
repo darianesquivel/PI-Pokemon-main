@@ -129,7 +129,7 @@ const getPokemonByIdApi = async (id) => {
         speed: searchIdApi.data.stats[5].base_stat,
         height: searchIdApi.data.height,
         weight: searchIdApi.data.weight,
-        image: searchIdApi.data.sprites.other.dream_world.front_default,
+        image: searchIdApi.data.sprites.front_default,
       };
 
       return searchIdPokemonApi;
@@ -160,7 +160,7 @@ const getPokemonByNameApi = async (name) => {
       speed: pokemonApi.data.stats[5].base_stat,
       height: pokemonApi.data.height,
       weight: pokemonApi.data.weight,
-      image: pokemonApi.data.sprites.other.dream_world.front_default,
+      image: pokemonApi.data.sprites.front_default,
     };
 
     return nameSearchApi;
@@ -174,8 +174,8 @@ const getPokemonByNameApi = async (name) => {
 //************************************************
 
 const getPokemonByNameDb = async (name) => {
+  let nameDb = name.toLowerCase();
   try {
-    let nameDb = name.toLowerCase();
     const pokemonDb = await Pokemon.findOne({
       where: {
         name: nameDb,
@@ -195,9 +195,19 @@ const getPokemonByNameDb = async (name) => {
     });
 
     return pokemonDb;
-  } catch (error) {
-    return "Pokemon no encontrado";
+  } catch (e) {
+    console.log(e);
   }
+};
+
+//*************************************************
+//**          BUSCAR POKEMON POR NAME DB 2       **
+//*************************************************
+
+const getPokemonByNameDb2 = async (name) => {
+  const pokemonsDb2 = await getPokemonDb();
+  const pokemonsDb2Filter = pokemonsDb2.filter((p) => p.name === name);
+  return pokemonsDb2Filter;
 };
 
 //*****************************************
@@ -232,6 +242,6 @@ module.exports = {
   getPokemonByIdApi,
   getPokemonByIdDb,
   getPokemonByNameApi,
-  getPokemonByNameDb,
+  getPokemonByNameDb2,
   getTypes,
 };

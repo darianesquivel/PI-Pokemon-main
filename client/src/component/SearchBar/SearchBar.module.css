@@ -8,6 +8,9 @@
   border: 3px dashed white;
   background-color: black;
   margin-right: 10px;
+  color: white;
+  font-size: 1rem;
+  font-family: "Press Start 2P", cursive;
 }
 
 .inputSearch::-webkit-input-placeholder {

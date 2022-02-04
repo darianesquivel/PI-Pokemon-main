@@ -4,7 +4,7 @@ const {
   getPokemonByIdApi,
   getPokemonByIdDb,
   getPokemonByNameApi,
-  getPokemonByNameDb,
+  getPokemonByNameDb2,
 } = require("./function");
 const { Pokemon, Type } = require("../db");
 const router = Router();
@@ -14,24 +14,28 @@ const router = Router();
 //*****************************************
 
 router.get("/", async (req, res, next) => {
-  try {
-    const name = req.query.name;
+  const name = req.query.name;
+  if (!name) {
+    const allPokemon = await getAllPokemons();
+    res.send(allPokemon);
+  } else {
+    let pokemonDb = await getPokemonByNameDb2(name);
+    let pokemonApi = await getPokemonByNameApi(name);
 
-    if (name) {
-      let pokemonApi = await getPokemonByNameApi(name);
-      if (pokemonApi !== "undefined" && pokemonApi !== "Pokemon no encontrado")
-        return res.send(pokemonApi);
+    let pokemonByName;
 
-      let pokemonDb = await getPokemonByNameDb(name);
-      if (pokemonDb !== "undefined") return res.send(pokemonDb);
-
-      return res.send("Pokemon no encontrado");
-    } else {
-      let allPokemons = await getAllPokemons();
-      res.status(200).send(allPokemons);
+    if (pokemonDb && pokemonDb !== "Pokemon no encontrado") {
+      pokemonByName = pokemonDb;
     }
-  } catch (error) {
-    res.status(404).send("Error");
+    if (pokemonApi && pokemonApi !== "Pokemon no encontrado") {
+      pokemonByName = [pokemonApi];
+    }
+
+    if (pokemonByName.length > 0) {
+      res.send(pokemonByName);
+    } else {
+      res.send("Pokemon no encontrado");
+    }
   }
 });
 

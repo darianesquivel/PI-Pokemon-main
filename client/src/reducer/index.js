@@ -95,11 +95,18 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             });
-
       return {
         ...state,
         pokemons: orderPokemonByStrange,
       };
+
+    case "SEARCH_BY_NAME":
+      console.log("SOY EL ACTION PAYLOAD", action.payload);
+      return {
+        ...state,
+        pokemons: action.payload,
+      };
+
     default:
       return state;
   }

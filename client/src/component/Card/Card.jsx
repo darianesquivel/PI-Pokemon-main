@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Card.module.css";
 import img from "./iconoespada.png";
+
 export default function Card({ name, types, image, attack }) {
   let typePokemon = types.map((e, i) => {
     const nameType = e.name ? e.name : e;

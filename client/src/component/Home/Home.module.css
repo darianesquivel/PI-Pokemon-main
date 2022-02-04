@@ -15,6 +15,7 @@
   gap: 20px;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .link {
@@ -53,4 +54,9 @@
 
 .buttonSearch:hover {
   background-color: rgb(16, 145, 231);
+}
+
+.space {
+  background-color: black;
+  height: 25vh;
 }

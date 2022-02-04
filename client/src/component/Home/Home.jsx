@@ -26,22 +26,20 @@ export default function Home() {
   const [pokemonsPerPage, setPokemonPerPage] = useState(12);
   const lastPokemon = currentPage * pokemonsPerPage;
   const firstPokemon = lastPokemon - pokemonsPerPage;
-  const currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
+
+  const currentPokemons =
+    allPokemons.length !== 1
+      ? allPokemons.slice(firstPokemon, lastPokemon)
+      : allPokemons;
 
   //*************************************************************************
   // ***** PARA TRAER TODOS LOS TYPES DE LOS 40 POKEMON QUE TRAE LA API + DB
   //*************************************************************************
 
   const objType = allPokemonsFilter.map((p) => p.types);
-  console.log("soy typesoption ", objType);
   const ArrType = [];
-  const options = objType.map((e) =>
-    e.forEach((l) => ArrType.push(l.name ? l.name : l))
-  );
+  objType.map((e) => e.forEach((l) => ArrType.push(l.name ? l.name : l)));
   const types = [...new Set(ArrType)];
-  console.log("soy typesoption2 ", options);
-  console.log("soy types ", ArrType);
-  console.log(" FILTRADOOO ", types);
 
   //*************************************************************************
   //*************************************************************************
@@ -55,10 +53,10 @@ export default function Home() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getPokemons());
-  }
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   dispatch(getPokemons());
+  // }
 
   function handleFilterType(e) {
     e.preventDefault();
@@ -88,96 +86,87 @@ export default function Home() {
     setCurrentPage(1);
   }
 
-  if (allPokemons.length < 1) {
-    return <Loading />;
-  } else {
-    return (
-      <div className={style.homeContainer}>
-        <NavBar />
-        <h1> POKEMON API </h1>
+  return (
+    <div className={style.homeContainer}>
+      <NavBar />
+      <h1> POKEMON API </h1>
+      <div>
         <div>
-          <button
-            onClick={(e) => {
-              handleClick(e);
+          <select
+            onChange={(e) => {
+              handleSort(e);
             }}
-            className={style.buttonSearch}
+            className={style.select}
           >
-            {" "}
-            Recarga{" "}
-          </button>
-          <div>
-            <select
-              onChange={(e) => {
-                handleSort(e);
-              }}
-              className={style.select}
-            >
-              <option className={style.optionSelect} value="abc">
-                A-Z
-              </option>
-              <option className={style.optionSelect} value="zyx">
-                Z-A
-              </option>
-            </select>
+            <option className={style.optionSelect} value="abc">
+              A-Z
+            </option>
+            <option className={style.optionSelect} value="zyx">
+              Z-A
+            </option>
+          </select>
 
-            <select
-              onChange={(e) => {
-                handleSortStrange(e);
-              }}
-              className={style.select}
-            >
-              <option className={style.optionSelect} value="fuerza-">
-                Fuerza -
-              </option>
-              <option className={style.optionSelect} value="fuerza+">
-                Fuerza +
-              </option>
-            </select>
+          <select
+            onChange={(e) => {
+              handleSortStrange(e);
+            }}
+            className={style.select}
+          >
+            <option className={style.optionSelect} value="fuerza-">
+              Fuerza -
+            </option>
+            <option className={style.optionSelect} value="fuerza+">
+              Fuerza +
+            </option>
+          </select>
 
-            <select
-              onChange={(e) => {
-                handleFilterCreated(e);
-              }}
-              className={style.select}
-            >
-              <option className={style.optionSelect} value="all">
-                Todos
-              </option>
-              <option className={style.optionSelect} value="api">
-                Existente
-              </option>
-              <option className={style.optionSelect} value="created">
-                Creado
-              </option>
-            </select>
+          <select
+            onChange={(e) => {
+              handleFilterCreated(e);
+            }}
+            className={style.select}
+          >
+            <option className={style.optionSelect} value="all">
+              Todos
+            </option>
+            <option className={style.optionSelect} value="api">
+              Existente
+            </option>
+            <option className={style.optionSelect} value="created">
+              Creado
+            </option>
+          </select>
 
-            <select
-              onChange={(e) => {
-                handleFilterType(e);
-              }}
-              className={style.select}
-            >
-              <option value="all" className={style.optionSelect}>
-                Todos
-              </option>
+          <select
+            onChange={(e) => {
+              handleFilterType(e);
+            }}
+            className={style.select}
+          >
+            <option value="all" className={style.optionSelect}>
+              Todos
+            </option>
 
-              {types?.map((t) => (
-                <option value={t} className={style.optionSelect}>
-                  {t}
-                </option>
-              ))}
-            </select>
-          </div>
+            {types?.map((t) => (
+              <option value={t} className={style.optionSelect}>
+                {t}
+              </option>
+            ))}
+          </select>
         </div>
+      </div>
 
-        <Paginado
-          pokemonsPerPage={pokemonsPerPage}
-          allPokemons={allPokemons.length}
-          paginado={paginado}
-        />
+      <Paginado
+        pokemonsPerPage={pokemonsPerPage}
+        allPokemons={allPokemons.length}
+        paginado={paginado}
+      />
 
-        <div className={style.cardsContainer}>
-          {currentPokemons?.map((p, i) => {
+      <div className={style.cardsContainer}>
+        {currentPokemons.length < 1 ? (
+          <Loading />
+        ) : (
+          currentPokemons?.map((p, i) => {
             return (
               <div>
                 <Link className={style.link} to={`/home/${p.id}`}>
@@ -191,9 +180,10 @@ export default function Home() {
                 </Link>
               </div>
             );
-          })}
-        </div>
+          })
+        )}
       </div>
-    );
-  }
+      <div className={style.space}></div>
+    </div>
+  );
 }
