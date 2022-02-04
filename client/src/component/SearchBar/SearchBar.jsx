@@ -17,7 +17,6 @@ export default function SearchBar() {
   function handleSubmit(e) {
     console.log("se ejecuto handleSubmit con name ", name);
     dispatch(searchByName(name));
-    setName("");
   }
 
   return (

@@ -26,11 +26,7 @@ export default function Home() {
   const [pokemonsPerPage, setPokemonPerPage] = useState(12);
   const lastPokemon = currentPage * pokemonsPerPage;
   const firstPokemon = lastPokemon - pokemonsPerPage;
-
-  const currentPokemons =
-    allPokemons.length !== 1
-      ? allPokemons.slice(firstPokemon, lastPokemon)
-      : allPokemons;
+  const currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
 
   //*************************************************************************
   // ***** PARA TRAER TODOS LOS TYPES DE LOS 40 POKEMON QUE TRAE LA API + DB
