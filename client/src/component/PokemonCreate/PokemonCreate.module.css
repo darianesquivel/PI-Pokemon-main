@@ -70,3 +70,30 @@
 .error {
   color: red;
 }
+
+.buttonDelete {
+  background: transparent;
+  color: white;
+  border: none;
+  margin: 5px;
+  font-family: "Press Start 2P", cursive;
+}
+
+.types {
+  display: flex;
+  margin: 10px;
+  border: 2px solid white;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.typeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+
+.typeName {
+  margin-left: 10px;
+}

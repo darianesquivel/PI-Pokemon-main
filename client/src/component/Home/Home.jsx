@@ -49,10 +49,10 @@ export default function Home() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  // function handleClick(e) {
-  //   e.preventDefault();
-  //   dispatch(getPokemons());
-  // }
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getPokemons());
+  }
 
   function handleFilterType(e) {
     e.preventDefault();
@@ -80,11 +80,6 @@ export default function Home() {
     dispatch(orderByStrange(e.target.value));
     setOrder(`Ordenado ${e.target.value}`);
     setCurrentPage(1);
-  }
-
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getPokemons());
   }
 
   return (
@@ -162,40 +157,52 @@ export default function Home() {
         allPokemons={allPokemons.length}
         paginado={paginado}
       />
+
       {console.log("ROMPE SI NO ENCUENTRA PERSONAJE ", currentPokemons)}
+
       <div className={style.cardsContainer}>
-        {currentPokemons === "not found" ? (
-          <div>
-            <img src={gif} alt="" width="100px" />
-            <h2>POKEMON NOT FOUND</h2>
-            <button
-              onClick={(e) => handleClick(e)}
-              className={style.buttonSearch}
-              type="submit"
-            >
-              Recargar
-            </button>
-          </div>
-        ) : currentPokemons.length < 1 ? (
-          <Loading />
-        ) : (
-          currentPokemons?.map((p, i) => {
-            return (
-              <div>
-                <Link className={style.link} to={`/pokemon/${p.id}`}>
-                  <Card
-                    key={i}
-                    name={p.name}
-                    image={p.image}
-                    types={p.types}
-                    attack={p.attack}
-                  />
-                </Link>
-              </div>
-            );
-          })
-        )}
+        {
+          currentPokemons === "not found" ? (
+            <div>
+              <img src={gif} alt="" width="100px" />
+              <h2>POKEMON NOT FOUND</h2>
+              <button
+                onClick={(e) => handleClick(e)}
+                className={style.buttonSearch}
+                type="submit"
+              >
+                Recargar
+              </button>
+            </div>
+          ) : // <---
+
+          currentPokemons.length < 1 ? (
+            <div>
+              {" "}
+              <Loading />{" "}
+            </div>
+          ) : (
+            // -----------------------------------------------------------------
+            currentPokemons?.map((p, i) => {
+              return (
+                <div>
+                  <Link className={style.link} to={`/pokemon/${p.id}`}>
+                    <Card
+                      key={i}
+                      name={p.name}
+                      image={p.image}
+                      types={p.types}
+                      attack={p.attack}
+                    />
+                  </Link>
+                </div>
+              );
+            })
+          ) // <---
+          // -----------------------------------------------------------------
+        }
       </div>
+
       <div className={style.space}></div>
     </div>
   );

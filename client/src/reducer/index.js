@@ -22,7 +22,6 @@ function rootReducer(state = initialState, action) {
       };
     case "FILTER_BY_TYPE":
       const allPokemons = state.allPokemons;
-
       const typeFiltered =
         action.payload === "all"
           ? allPokemons
@@ -38,14 +37,31 @@ function rootReducer(state = initialState, action) {
       };
     case "FILTER_CREATED":
       const allPokemons2 = state.allPokemons;
-      const createdPokemons =
-        action.payload === "created"
-          ? allPokemons2.filter((p) => p.createInDb)
-          : allPokemons2.filter((p) => !p.createInDb);
+      let response = [];
+
+      if (action.payload === "all") {
+        response = allPokemons2;
+      }
+
+      if (action.payload === "created") {
+        const created = allPokemons2.filter((p) => p.createInDb);
+        if (created.length > 0) {
+          response = created;
+        } else {
+          response = "not found";
+        }
+      }
+
+      if (action.payload === "api") {
+        const api = allPokemons2.filter((p) => !p.createInDb);
+        response = api;
+      }
+
       return {
         ...state,
-        pokemons: action.payload === "all" ? allPokemons2 : createdPokemons,
+        pokemons: response,
       };
+
     case "ORDER_BY_NAME":
       const allPokemons3 = state.allPokemons;
       const orderPokemonByName =

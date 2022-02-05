@@ -32,12 +32,12 @@ export default function PokemonCreate() {
     image: "",
   });
 
+  console.log(input.types);
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
-    console.log(input);
     setError(
       validate({
         ...input,
@@ -51,14 +51,13 @@ export default function PokemonCreate() {
       ...input,
       types: [...input.types, e.target.value],
     });
-    console.log(input.types);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(input);
     dispatch(postPokemon(input));
     alert("Pokemon creado");
+    console.log("soy el evento que submitea", e);
     setInput({
       name: "",
       types: [],
@@ -73,7 +72,8 @@ export default function PokemonCreate() {
     //history.push("/home");
   }
 
-  function handleDelete(ty) {
+  function handleDelete(ty, e) {
+    e.preventDefault();
     setInput({
       ...input,
       types: input.types.filter((t) => t !== ty),
@@ -104,19 +104,24 @@ export default function PokemonCreate() {
         </div>
         <div>
           <label> Types: </label>
-          <ul>
-            <li>
-              {input.types.map((ty) => (
-                <div>
-                  <p>{ty}</p>
-                  <button onClick={() => handleDelete(ty)}>x</button>
-                </div>
-              ))}
-            </li>
-          </ul>
+
+          <div className={style.typeContainer}>
+            {input.types.map((ty, index) => (
+              <div key={index} className={style.types}>
+                <p className={style.typeName}>{ty}</p>
+                <button
+                  className={style.buttonDelete}
+                  onClick={(e) => handleDelete(ty, e)}
+                >
+                  x
+                </button>
+              </div>
+            ))}
+          </div>
+
           <select onChange={(e) => handleSelect(e)} className={style.select}>
-            {types.map((t) => (
-              <option value={t.name} className={style.optionSelect}>
+            {types.map((t, index) => (
+              <option key={index} value={t.name} className={style.optionSelect}>
                 {t.name}
               </option>
             ))}
@@ -193,11 +198,9 @@ export default function PokemonCreate() {
           />
         </div>
 
-        {!error.name && (
-          <button className={style.buttonCreate} type="submit">
-            Crear personaje
-          </button>
-        )}
+        <button className={style.buttonCreate} type="submit">
+          Crear personaje
+        </button>
       </form>
     </div>
   );

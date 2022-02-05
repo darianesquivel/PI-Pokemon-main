@@ -70,7 +70,10 @@ export function searchByName(payload) {
 
 export function postPokemon(payload) {
   return async function (dispatch) {
-    const pokemonCreate = axios.post("http://localhost:3001/pokemon/", payload);
+    const pokemonCreate = await axios.post(
+      "http://localhost:3001/pokemon/",
+      payload
+    );
     console.log("soy pokemon create", pokemonCreate);
     return pokemonCreate;
   };
