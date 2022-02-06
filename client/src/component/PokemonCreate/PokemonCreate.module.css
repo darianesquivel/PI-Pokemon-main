@@ -1,5 +1,6 @@
 .createContainer {
   width: 100%;
+  min-height: 100vh;
   background-color: black;
   font-family: "Press Start 2P", cursive;
   color: white;
@@ -11,22 +12,41 @@
 }
 
 .inputCreate {
-  width: 400px;
-  height: 50px;
+  width: 100px;
+  height: 40px;
   border: 3px dashed white;
   background-color: black;
   margin-right: 10px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-family: "Press Start 2P", cursive;
   margin-bottom: 15px;
+}
+
+.inputCreateLarge {
+  width: 300px;
+  height: 30px;
+  border: 3px dashed white;
+  background-color: black;
+  margin-right: 10px;
+  color: white;
+  font-size: 0.8rem;
+  font-family: "Press Start 2P", cursive;
+  margin-bottom: 15px;
+}
+
+.subContainer {
+  display: flex;
+}
+.subContainer2 {
+  display: flex;
 }
 
 .inputCreate::-webkit-input-placeholder {
   font-family: "Press Start 2P", cursive;
   text-align: center;
   color: rgba(255, 255, 255, 0.644);
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .buttonCreate {
@@ -41,8 +61,8 @@
 }
 
 .select {
-  width: 400px;
-  height: 50px;
+  width: 300px;
+  height: 30px;
   border: 3px dashed white;
   background-color: black;
   margin-right: 10px;
@@ -50,7 +70,7 @@
   font-family: "Press Start 2P", cursive;
   text-align: center;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-bottom: 15px;
 }
 
@@ -63,12 +83,25 @@
 }
 
 .form {
-  width: 400px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .error {
   color: red;
+  font-size: 0.6rem;
+}
+
+.warning {
+  color: rgb(235, 231, 24);
+  font-size: 0.6rem;
+}
+
+.success {
+  color: rgb(15, 160, 15);
+  font-size: 0.6rem;
 }
 
 .buttonDelete {
@@ -79,21 +112,68 @@
   font-family: "Press Start 2P", cursive;
 }
 
+.buttonDelete:hover {
+  color: rgb(16, 145, 231);
+}
+
 .types {
   display: flex;
-  margin: 10px;
-  border: 2px solid white;
+  margin: 5px;
+  border: 2px solid rgb(5, 185, 44);
   justify-items: center;
   justify-content: center;
   text-align: center;
+  font-size: 0.6rem;
 }
 
 .typeContainer {
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
 }
 
 .typeName {
   margin-left: 10px;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+.inputError {
+  display: flex;
+}
+
+.errorContainer {
+  width: 70%;
+}
+
+.formContainer {
+  width: 50%;
+}
+
+.formErrorContainer {
+  display: flex;
+}
+
+@media (max-width: 740px) {
+  .formErrorContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .errorContainer {
+    width: 100%;
+  }
+
+  .formContainer {
+    width: 100%;
+  }
 }

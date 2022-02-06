@@ -202,8 +202,6 @@ export default function Home() {
           // -----------------------------------------------------------------
         }
       </div>
-
-      <div className={style.space}></div>
     </div>
   );
 }
