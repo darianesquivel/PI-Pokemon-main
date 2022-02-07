@@ -206,7 +206,9 @@ const getPokemonByNameDb = async (name) => {
 
 const getPokemonByNameDb2 = async (name) => {
   const pokemonsDb2 = await getPokemonDb();
-  const pokemonsDb2Filter = pokemonsDb2.filter((p) => p.name === name);
+  const pokemonsDb2Filter = pokemonsDb2.filter(
+    (p) => p.name.toLowerCase() === name.toLowerCase()
+  );
   return pokemonsDb2Filter;
 };
 

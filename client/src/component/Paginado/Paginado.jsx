@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Paginado.module.css";
-
+import globalStyle from "../globalStyle.module.css";
 export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {
   const pageNumbers = [];
 
@@ -12,7 +12,11 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {
     <nav>
       <ul className={style.list}>
         {pageNumbers?.map((n) => (
-          <li className={style.listItem} key={n} onClick={() => paginado(n)}>
+          <li
+            className={globalStyle.eightbitbtn2}
+            key={n}
+            onClick={() => paginado(n)}
+          >
             {n}
           </li>
         ))}

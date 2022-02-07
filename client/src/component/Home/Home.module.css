@@ -11,6 +11,7 @@
 
 .cardsContainer {
   width: 60%;
+  min-height: 50vh;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

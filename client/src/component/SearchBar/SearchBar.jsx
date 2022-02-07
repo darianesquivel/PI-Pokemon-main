@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../actions";
 import style from "./SearchBar.module.css";
+import globalStyle from "../globalStyle.module.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function SearchBar() {
       />
       <button
         onClick={(e) => handleSubmit(e)}
-        className={style.buttonSearch}
+        className={globalStyle.eightbitbtn}
         type="submit"
       >
         Search

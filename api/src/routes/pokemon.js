@@ -66,24 +66,24 @@ router.post("/", async (req, res, next) => {
   try {
     let {
       name,
+      types,
       hp,
       attack,
       defense,
       speed,
       height,
       weight,
-      types,
       image,
       createInDb,
     } = req.body;
 
     let allPokemons = await getAllPokemons();
 
-    let namePokemon = allPokemons.filter(
+    let repeatPokemon = allPokemons.filter(
       (e) => e.name.toLowerCase() === name.toLowerCase()
     );
 
-    if (namePokemon.length) {
+    if (repeatPokemon.length) {
       res.status(400).send("Ya existe un Pokemon con ese nombre");
     } else {
       const newPokemon = await Pokemon.create({
@@ -99,7 +99,7 @@ router.post("/", async (req, res, next) => {
       });
 
       types.map(async (t) => {
-        const newType = await Type.findOrCreate({
+        const newType = await Type.findAll({
           where: {
             name: t,
           },
@@ -110,6 +110,7 @@ router.post("/", async (req, res, next) => {
       res.status(200).send("Pokemon agregado con exito");
     }
   } catch (error) {
+    console.log("soy el error de post", error);
     res.status(404).send("No se pudo agregar pokemon");
   }
 });
