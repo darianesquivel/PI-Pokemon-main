@@ -83,7 +83,7 @@ function validate(input) {
   if (input.weight < stats.weight.min || input.weight > stats.weight.max) {
     error.weight = `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`;
   }
-  if (!regularUrl.test(input.image)) {
+  if (input.image.length > 0 && !regularUrl.test(input.image)) {
     error.image = "IMAGE debe ser una URL";
   }
   return error;
@@ -103,7 +103,7 @@ export default function PokemonCreate() {
     speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
     heigth: `HEIGTH debe ser entre ${stats.heigth.min} - ${stats.heigth.max}`,
     weight: `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`,
-    image: "IMAGE debe ser una URL",
+    image: "",
   });
   const [input, setInput] = useState({
     name: "",

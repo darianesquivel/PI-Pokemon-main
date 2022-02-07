@@ -20,3 +20,17 @@
 .buttonDetail:hover {
   background-color: rgb(16, 145, 231);
 }
+
+.img {
+  min-width: 300px;
+}
+
+.icon {
+  max-height: 30px;
+}
+
+.statContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

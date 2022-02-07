@@ -16,9 +16,53 @@
 }
 
 .img {
-  width: 200px;
+  width: 150px;
+  height: 150px;
+}
+
+.type {
+  font-size: 0.8rem;
+  display: flex;
+  border: 2px solid white;
+  padding: 5px;
+  margin: 2px;
+}
+
+.typeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 250px;
 }
 
 .icono {
   height: 50%;
+}
+
+.eightbitCard {
+  width: 250px;
+  height: 400px;
+  background: #505050;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  font-family: "Press Start 2P", cursive;
+  text-decoration: none;
+  color: white;
+  box-shadow: inset -4px -4px 0px 0px #1a1a1a;
+}
+
+.eightbitCard:hover {
+  background-color: #383838;
+
+  box-shadow: inset -6px -6px 0px 0px #1a1a1a;
+}
+
+.eightbitCard:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #1a1a1a;
 }

@@ -7,6 +7,7 @@ $reset-sec-button-background: #CE372B;
 $reset-shadow-color:  #8C2022; */
 
 .eightbitbtn {
+  border: none;
   background: #92cd41;
   display: inline-block;
   position: relative;

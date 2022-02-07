@@ -9,3 +9,51 @@
   font-family: "Press Start 2P", cursive;
   color: white;
 }
+
+body {
+  font-family: "8BITWONDERNominal";
+  font-weight: normal;
+  font-style: normal;
+  background-color: darkslategrey;
+}
+
+.loadingtext {
+  font-size: 1em;
+  display: inline;
+  color: white;
+}
+
+.smbox {
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  display: inline-block;
+}
+
+.boxloading {
+  width: 135px;
+  height: 20px;
+  border: 5px solid green;
+  margin: 10px auto;
+  padding: 3px;
+  display: flex;
+}
+
+.smboxloading {
+  width: 7px;
+  height: 20px;
+  background-color: darkslategrey;
+  display: inline-block;
+  animation: loadingbar 1.5s infinite;
+}
+
+@keyframes loadingbar {
+  from {
+    width: 7px;
+  }
+
+  to {
+    width: 135px;
+    background-color: green;
+  }
+}

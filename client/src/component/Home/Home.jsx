@@ -16,8 +16,7 @@ import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import Paginado from "../Paginado/Paginado";
 import gif from "./pokemonnotfound.gif";
-import imgUn from "./pokemonUnknown.jpg";
-import globalStyle from "../globalStyle.module.css";
+import imgUn from "./pokemonUnknow.svg";
 
 export default function Home() {
   const dispatch = useDispatch();
