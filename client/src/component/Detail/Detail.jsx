@@ -7,6 +7,7 @@ import { clearDetail } from "../../actions";
 import Loading from "../Loading/Loading";
 import style from "./Detail.module.css";
 import globalStyle from "../globalStyle.module.css";
+import defaultImg from "./pokemonUnknow.svg";
 import imgHp from "./hp.png";
 import imgAttack from "./attack.png";
 
@@ -36,7 +37,11 @@ export default function Detail() {
             <button className={globalStyle.eightbitbtn}>volver</button>
           </Link>
           <h1>NAME: {detailPokemon.name}</h1>
-          <img className={style.img} src={detailPokemon.image} alt="" />
+          <img
+            className={style.img}
+            src={detailPokemon.image ? detailPokemon.image : defaultImg}
+            alt=""
+          />
           <h4>TYPES:</h4>
           {detailPokemon.types.map((p) => (
             <h4>{p}</h4>

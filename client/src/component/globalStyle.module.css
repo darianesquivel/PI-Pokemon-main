@@ -23,10 +23,12 @@ $reset-shadow-color:  #8C2022; */
 .eightbitbtn:hover {
   background: #76c442;
   box-shadow: inset -6px -6px 0px 0px #4aa52e;
+  transform: scale(1.01);
 }
 
 .eightbitbtn:hover:active {
   box-shadow: inset 4px 4px 0px 0px #4aa52e;
+  transform: scale(1);
 }
 
 .eightbitbtn2 {

@@ -1,0 +1,343 @@
+/* TYPE STANDAR */
+
+.card {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  font-family: "Press Start 2P", cursive;
+  text-decoration: none;
+  color: white;
+}
+
+.card:hover {
+  transform: scale(1.01);
+}
+
+.card:hover:active {
+  transform: scale(1);
+}
+
+/* TYPE NORMAL */
+.normal {
+  background: #565454;
+  box-shadow: inset -4px -4px 0px 0px #444242;
+}
+
+.normal:hover {
+  background-color: #383636;
+  box-shadow: inset -6px -6px 0px 0px #2c2b2b;
+}
+
+.normal:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #2c2b2b;
+}
+
+/* TYPE FIGHTING */
+
+.fighting {
+  background: #8e5240;
+  box-shadow: inset -4px -4px 0px 0px #814b3b;
+}
+
+.fighting:hover {
+  background-color: #683c2f;
+  box-shadow: inset -6px -6px 0px 0px #502e24;
+}
+
+.fighting:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #502e24;
+}
+
+/* TYPE FLYING */
+
+.flying {
+  background: #97c0f9;
+  box-shadow: inset -4px -4px 0px 0px #84a7d8;
+}
+
+.flying:hover {
+  background-color: #7594c0;
+  box-shadow: inset -6px -6px 0px 0px #627ca1;
+}
+
+.flying:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #627ca1;
+}
+
+/* TYPE POISON */
+
+.poison {
+  background: #9d5f8f;
+  box-shadow: inset -4px -4px 0px 0px #7c4b71;
+}
+
+.poison:hover {
+  background-color: #5e3a56;
+  box-shadow: inset -6px -6px 0px 0px #4e3048;
+}
+
+.poison:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #4e3048;
+}
+
+/* TYPE GROUND */
+
+.ground {
+  background: #eace98;
+  box-shadow: inset -4px -4px 0px 0px #c9b283;
+}
+
+.ground:hover {
+  background-color: #b19d76;
+  box-shadow: inset -6px -6px 0px 0px #998866;
+}
+
+.ground:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #998866;
+}
+
+/* TYPE ROCK */
+
+.rock {
+  background: #f4eddd;
+  box-shadow: inset -4px -4px 0px 0px #c5bfb1;
+}
+
+.rock:hover {
+  background-color: #b3ad9f;
+  box-shadow: inset -6px -6px 0px 0px #928d81;
+}
+
+.rock:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #928d81;
+}
+
+/* TYPE BUG */
+
+.bug {
+  background: #cfdb73;
+  box-shadow: inset -4px -4px 0px 0px #bcc768;
+}
+
+.bug:hover {
+  background-color: #a3ad57;
+  box-shadow: inset -6px -6px 0px 0px #8e974b;
+}
+
+.bug:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #8e974b;
+}
+
+/* TYPE GHOST */
+
+.ghost {
+  background: #999bc6;
+  box-shadow: inset -4px -4px 0px 0px #797ba5;
+}
+
+.ghost:hover {
+  background-color: #60628b;
+  box-shadow: inset -6px -6px 0px 0px #464866;
+}
+
+.ghost:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #464866;
+}
+
+/* TYPE STEEL */
+
+.steel {
+  background: #8c8b90;
+  box-shadow: inset -4px -4px 0px 0px #7a7a7e;
+}
+
+.steel:hover {
+  background-color: #616164;
+  box-shadow: inset -6px -6px 0px 0px #49494b;
+}
+
+.steel:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #49494b;
+}
+
+/* TYPE FIRE */
+
+.fire {
+  background: #f54626;
+  box-shadow: inset -4px -4px 0px 0px #cf3a20;
+}
+
+.fire:hover {
+  background-color: #b3321b;
+  box-shadow: inset -6px -6px 0px 0px #a02d19;
+}
+
+.fire:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #a02d19;
+}
+
+/* TYPE WATER */
+
+.water {
+  background: #7abbf9;
+  box-shadow: inset -4px -4px 0px 0px #669ccf;
+}
+
+.water:hover {
+  background-color: #5787b4;
+  box-shadow: inset -6px -6px 0px 0px #497095;
+}
+
+.water:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #497095;
+}
+
+/* TYPE GRASS */
+
+.grass {
+  background: #a8df88;
+  box-shadow: inset -4px -4px 0px 0px #98c87c;
+}
+
+.grass:hover {
+  background-color: #84ac6c;
+  box-shadow: inset -6px -6px 0px 0px #668852;
+}
+
+.grass:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #668852;
+}
+
+/* TYPE ELECTRIC */
+
+.electric {
+  background: #fbdc82;
+  box-shadow: inset -4px -4px 0px 0px #d8be70;
+}
+
+.electric:hover {
+  background-color: #cea93c;
+  box-shadow: inset -6px -6px 0px 0px #b89737;
+}
+
+.electric:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #b89737;
+}
+
+/* TYPE PSYCHIC */
+
+.psychic {
+  background: #f657e1;
+  box-shadow: inset -4px -4px 0px 0px #cc49ba;
+}
+
+.psychic:hover {
+  background-color: #b843a8;
+  box-shadow: inset -6px -6px 0px 0px #a73d98;
+}
+
+.psychic:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #a73d98;
+}
+
+/* TYPE ICE */
+
+.ice {
+  background: #c8f7fa;
+  box-shadow: inset -4px -4px 0px 0px #b1dadd;
+}
+
+.ice:hover {
+  background-color: #95c2c5;
+  box-shadow: inset -6px -6px 0px 0px #80a7aa;
+}
+
+.ice:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #80a7aa;
+}
+
+/* TYPE DRAGON */
+
+.dragon {
+  background: #7868bf;
+  box-shadow: inset -4px -4px 0px 0px #6759a3;
+}
+
+.dragon:hover {
+  background-color: #534883;
+  box-shadow: inset -6px -6px 0px 0px #483e70;
+}
+
+.dragon:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #483e70;
+}
+
+/* TYPE DARK */
+
+.dark {
+  background: #363434;
+  box-shadow: inset -4px -4px 0px 0px #2c2b2b;
+}
+
+.dark:hover {
+  background-color: #252424;
+  box-shadow: inset -6px -6px 0px 0px #1d1c1c;
+}
+
+.dark:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #1d1c1c;
+}
+
+/* TYPE FAIRY */
+
+.fairy {
+  background: #faccf7;
+  box-shadow: inset -4px -4px 0px 0px #e6b9e3;
+}
+
+.fairy:hover {
+  background-color: #c7a0c4;
+  box-shadow: inset -6px -6px 0px 0px #b18eae;
+}
+
+.fairy:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #b18eae;
+}
+
+/* TYPE UNKNOWN */
+
+.unknown {
+  background: #769f94;
+  box-shadow: inset -4px -4px 0px 0px #678a81;
+}
+
+.unknown:hover {
+  background-color: #597971;
+  box-shadow: inset -6px -6px 0px 0px #4e6962;
+}
+
+.unknown:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #4e6962;
+}
+
+/* TYPE SHADOW */
+
+.shadow {
+  background: #565454;
+  box-shadow: inset -4px -4px 0px 0px #474545;
+}
+
+.shadow:hover {
+  background-color: #3b3939;
+  box-shadow: inset -6px -6px 0px 0px #312f2f;
+}
+
+.shadow:hover:active {
+  box-shadow: inset 4px 4px 0px 0px #312f2f;
+}

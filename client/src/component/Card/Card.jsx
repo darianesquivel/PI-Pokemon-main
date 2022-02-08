@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Card.module.css";
 import img from "./iconoespada.png";
+import "./Card.css";
 
 export default function Card({ name, types, image, attack }) {
   let typePokemon = types.map((e, i) => {
@@ -11,8 +12,11 @@ export default function Card({ name, types, image, attack }) {
       </h5>
     );
   });
+
+  let styleType = typePokemon[0].props.children;
+  let card = "card";
   return (
-    <div className={style.eightbitCard}>
+    <div className={`${card} ${styleType}`}>
       <h3>{name}</h3>
       <img className={style.img} src={image} alt="img not found" />
       <div className={style.typeContainer}>{typePokemon}</div>

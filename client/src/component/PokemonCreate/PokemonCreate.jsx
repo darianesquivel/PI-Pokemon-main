@@ -131,16 +131,12 @@ export default function PokemonCreate() {
   }
 
   function handleSelect(e) {
-    setInput({
-      ...input,
-      types: [...input.types, e.target.value],
-    });
-    setError(
-      validate({
+    if (input.types.indexOf(e.target.value) === -1) {
+      setInput({
         ...input,
-        [e.target.name]: e.target.value,
-      })
-    );
+        types: [...input.types, e.target.value],
+      });
+    }
   }
 
   function handleSubmit(e) {
