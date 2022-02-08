@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { postPokemon, getTypes, getPokemons } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import Footer from "../Footer/Footer";
 import style from "./PokemonCreate.module.css";
 import globalStyle from "../globalStyle.module.css";
 
@@ -97,7 +98,7 @@ export default function PokemonCreate() {
   const [error, setError] = useState({
     name: "NOMBRE debe contener entre 3-10 caracteres",
     //types: "TYPES debe tener al menos 1",
-    hp: `HP debe ser entre ${stats.hp.min} - ${stats.hp.max} caracteres`,
+    hp: `HP debe ser entre ${stats.hp.min} - ${stats.hp.max}`,
     attack: `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`,
     defense: `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`,
     speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
@@ -439,6 +440,7 @@ export default function PokemonCreate() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

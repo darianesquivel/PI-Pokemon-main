@@ -9,7 +9,7 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {
   }
 
   return (
-    <nav>
+    <nav className={style.listContainer}>
       <ul className={style.list}>
         {pageNumbers?.map((n) => (
           <li

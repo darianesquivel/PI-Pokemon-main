@@ -1,0 +1,25 @@
+.footerContainer {
+  padding: 20px 0px 20px 0px;
+}
+
+.by {
+  font-size: 0.8rem;
+}
+
+.gif2 img {
+  width: 25px;
+  margin: 0px -15px 0px -17px;
+}
+
+.img {
+  width: 40px;
+}
+
+.img:hover {
+  transform: scale(1.1);
+  width: 40px;
+}
+
+.social {
+  display: flex;
+}

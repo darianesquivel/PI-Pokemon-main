@@ -7,11 +7,11 @@ import globalStyle from "../globalStyle.module.css";
 export default function NavBar() {
   return (
     <div className={style.navBarContainer}>
-      <SearchBar />
       <Link className={globalStyle.eightbitbtn} to="/pokemons">
         {" "}
         Crear pokemon{" "}
       </Link>
+      <SearchBar />
     </div>
   );
 }

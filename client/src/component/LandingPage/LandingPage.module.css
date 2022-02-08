@@ -4,7 +4,7 @@
 .LangindContainer {
   height: 100vh;
   width: 100%;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -17,21 +17,7 @@
 
 .btnLink {
   text-decoration: none;
-}
-
-.btnCta {
-  width: 255px;
-  border: none;
-  text-decoration: none;
-  background-color: transparent;
-  color: rgb(255, 255, 255);
-  border-radius: 50px;
-  padding: 4px 20px 4px 20px;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  transition: 0.5s;
-  cursor: pointer;
-  font-family: "Press Start 2P", cursive;
+  z-index: 2;
 }
 
 .btnCta:hover {
@@ -50,13 +36,10 @@
   width: 70px;
 }
 
-.by {
-  font-size: 0.8rem;
+.imgBackground {
+  position: absolute;
+  bottom: 100px;
 }
 
-.gif2 img {
-  width: 25px;
-  margin: 0px -15px 0px -17px;
+@media (max-width: 900px) {
 }
-
-/* ANIMACION BOTON */

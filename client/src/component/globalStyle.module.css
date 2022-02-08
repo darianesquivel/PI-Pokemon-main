@@ -1,11 +1,3 @@
-/* $alt-button-background: #F7D51D;
-$alt-sec-button-background: #F2C409;
-$alt-shadow-color:  #E59400;
-
-$reset-button-background: #E76E55;
-$reset-sec-button-background: #CE372B;
-$reset-shadow-color:  #8C2022; */
-
 .eightbitbtn {
   border: none;
   background: #92cd41;
@@ -18,6 +10,7 @@ $reset-shadow-color:  #8C2022; */
   text-decoration: none;
   color: white;
   box-shadow: inset -4px -4px 0px 0px #4aa52e;
+  text-transform: uppercase;
 }
 
 .eightbitbtn:hover {

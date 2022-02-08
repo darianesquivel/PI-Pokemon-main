@@ -15,8 +15,10 @@ import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import Paginado from "../Paginado/Paginado";
+import Footer from "../Footer/Footer";
 import gif from "./pokemonnotfound.gif";
 import imgUn from "./pokemonUnknow.svg";
+import globalStyle from "../globalStyle.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -85,8 +87,9 @@ export default function Home() {
 
   return (
     <div className={style.homeContainer}>
+      <h1> 8-BIT POKEMON API </h1>
       <NavBar />
-      <h1> POKEMON API </h1>
+
       <div>
         <div>
           <select
@@ -169,7 +172,7 @@ export default function Home() {
               <h2>POKEMON NOT FOUND</h2>
               <button
                 onClick={(e) => handleClick(e)}
-                className={style.buttonSearch}
+                className={globalStyle.eightbitbtn}
                 type="submit"
               >
                 Recargar
@@ -208,6 +211,7 @@ export default function Home() {
         allPokemons={allPokemons.length}
         paginado={paginado}
       />
+      <Footer />
     </div>
   );
 }

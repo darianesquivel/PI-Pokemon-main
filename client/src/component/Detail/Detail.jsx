@@ -5,11 +5,16 @@ import { useEffect } from "react";
 import { getDetail } from "../../actions";
 import { clearDetail } from "../../actions";
 import Loading from "../Loading/Loading";
+import Footer from "../Footer/Footer";
 import style from "./Detail.module.css";
 import globalStyle from "../globalStyle.module.css";
 import defaultImg from "./pokemonUnknow.svg";
-import imgHp from "./hp.png";
-import imgAttack from "./attack.png";
+import imgHp from "./hp.svg";
+import imgAttack from "./attack.svg";
+import imgDefense from "./def.svg";
+import imgHeight from "./height.svg";
+import imgWeight from "./weight.svg";
+import imgSpeed from "./speed.svg";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -18,7 +23,7 @@ export default function Detail() {
 
   useEffect(() => {
     dispatch(getDetail(id));
-  }, []);
+  }, [dispatch]);
 
   const detailPokemon = useSelector((state) => state.detail);
 
@@ -27,6 +32,7 @@ export default function Detail() {
     dispatch(clearDetail());
   }, [dispatch]);
 
+  console.log("detailpokemon", detailPokemon);
   return (
     <div className={style.detailContainer}>
       {detailPokemon.length < 1 ? (
@@ -36,38 +42,57 @@ export default function Detail() {
           <Link to="/home">
             <button className={globalStyle.eightbitbtn}>volver</button>
           </Link>
-          <h1>NAME: {detailPokemon.name}</h1>
-          <img
-            className={style.img}
-            src={detailPokemon.image ? detailPokemon.image : defaultImg}
-            alt=""
-          />
-          <h4>TYPES:</h4>
-          {detailPokemon.types.map((p) => (
-            <h4>{p}</h4>
-          ))}
-          <div className={style.statContainer}>
-            <img className={style.icon} src={imgHp} alt="" />
-            <h4>HP: {detailPokemon.hp}</h4>
-          </div>
-          <div className={style.statContainer}>
-            <img className={style.icon} src={imgAttack} alt="" />
-            <h4>ATTACK: {detailPokemon.attack}</h4>
-          </div>
-          <div className={style.statContainer}>
-            <h4>DEFENSE: {detailPokemon.defense}</h4>
-          </div>
-          <div className={style.statContainer}>
-            <h4>SPEED: {detailPokemon.speed}</h4>
-          </div>
-          <div className={style.statContainer}>
-            <h4>HEIGHT: {detailPokemon.height}</h4>
-          </div>
-          <div>
-            <h4>WEIGHT: {detailPokemon.weight}</h4>
+          <div className={style.subContainers}>
+            <div className={style.imgNameTypeContainer}>
+              <img
+                className={style.img}
+                src={detailPokemon.image ? detailPokemon.image : defaultImg}
+                alt=""
+              />
+              <h1>{detailPokemon.name}</h1>
+              <h4 className={style.tittle}>TYPES</h4>
+              <div className={style.typContainer}>
+                {detailPokemon.types.map((p) => (
+                  <h4 className={style.type}>{p}</h4>
+                ))}
+              </div>
+            </div>
+            <div className={style.statsContainer}>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgHp} alt="" />
+                <h3>HP</h3>
+                <h4>{detailPokemon.hp}</h4>
+              </div>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgAttack} alt="" />
+                <h3>ATTACK</h3>
+                <h4>{detailPokemon.attack}</h4>
+              </div>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgDefense} alt="" />
+                <h3>DEFENSE</h3>
+                <h4>{detailPokemon.defense}</h4>
+              </div>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgSpeed} alt="" />
+                <h3>SPEED</h3>
+                <h4>{detailPokemon.speed}</h4>
+              </div>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgHeight} alt="" />
+                <h3>HEIGHT</h3>
+                <h4>{detailPokemon.height}</h4>
+              </div>
+              <div className={style.statContainer}>
+                <img className={style.icon} src={imgWeight} alt="" />
+                <h3>WEIGHT</h3>
+                <h4>{detailPokemon.weight}</h4>
+              </div>
+            </div>
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 .createContainer {
   width: 100%;
   min-height: 100vh;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   font-family: "Press Start 2P", cursive;
   color: white;
   font-size: 1rem;
@@ -15,7 +15,7 @@
   width: 100px;
   height: 40px;
   border: 3px dashed white;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-size: 0.8rem;
@@ -27,7 +27,7 @@
   width: 100px;
   height: 40px;
   border: 3px dashed rgb(255, 0, 0);
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-size: 0.8rem;
@@ -39,7 +39,7 @@
   width: 300px;
   height: 30px;
   border: 3px dashed white;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-size: 0.8rem;
@@ -51,7 +51,7 @@
   width: 300px;
   height: 30px;
   border: 3px dashed rgb(255, 3, 3);
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-size: 0.8rem;
@@ -88,7 +88,7 @@
   width: 300px;
   height: 30px;
   border: 3px dashed white;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-family: "Press Start 2P", cursive;
@@ -102,7 +102,7 @@
   width: 300px;
   height: 30px;
   border: 3px dashed rgb(255, 0, 0);
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   margin-right: 10px;
   color: white;
   font-family: "Press Start 2P", cursive;
@@ -151,7 +151,7 @@
 }
 
 .buttonDelete:hover {
-  color: rgb(16, 145, 231);
+  color: rgb(255, 1, 1);
 }
 
 .types {
@@ -167,7 +167,7 @@
 
 .typeContainer {
   min-height: 100px;
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   border: 3px dashed rgb(255, 255, 255);

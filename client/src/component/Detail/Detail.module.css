@@ -1,37 +1,93 @@
 .detailContainer {
   width: 100%;
   min-height: 100vh;
-  background-color: black;
+  background-color: rgb(31, 31, 31);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: "Press Start 2P", cursive;
   color: white;
+  text-transform: uppercase;
+  padding-top: 20px;
 }
 
-.buttonDetail {
-  border: none;
-  height: 53px;
-  font-family: "Press Start 2P", cursive;
-  background-color: white;
+.subContainers {
+  display: flex;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: center;
 }
 
-.buttonDetail:hover {
-  background-color: rgb(16, 145, 231);
+.imgNameTypeContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.statsContainer {
+  width: 50%;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
 }
 
 .img {
-  max-width: 300px;
+  width: 300px;
   padding: 20px;
 }
 
 .icon {
+  max-width: 30px;
   max-height: 30px;
 }
 
-.statContainer {
+.typContainer {
+  width: 300px;
+  min-height: 100px;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  border: 3px solid white;
   justify-content: center;
   align-items: center;
+}
+
+.type {
+  text-transform: uppercase;
+  border: 3px dashed white;
+  padding: 10px;
+}
+
+.statContainer {
+  width: 130px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed white;
+  padding: 10px;
+}
+
+@media (max-width: 900px) {
+  .subContainers {
+    flex-direction: column;
+  }
+
+  .statsContainer {
+    width: 100%;
+  }
+
+  .imgNameTypeContainer {
+    width: 100%;
+  }
 }

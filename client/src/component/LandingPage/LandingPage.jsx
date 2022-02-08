@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./LandingPage.module.css";
 import gif from "./pikachu.gif";
-import gif2 from "./bulbasaur.gif";
+import gif2 from "./fondopokemons.gif";
 import globalStyle from "../globalStyle.module.css";
+import Footer from "../Footer/Footer";
 
 const cta = "< ingresar >";
 
@@ -17,14 +18,8 @@ export default function LandingPage() {
           <button className={globalStyle.eightbitbtn}> {cta} </button>
         </div>
       </Link>
-
-      <p className={style.by}>
-        developed by @dN - 2{" "}
-        <span className={style.gif2}>
-          <img src={gif2} alt="" />
-        </span>{" "}
-        22
-      </p>
+      <img className={style.imgBackground} src={gif2} alt="" />
+      <Footer />
     </div>
   );
 }
