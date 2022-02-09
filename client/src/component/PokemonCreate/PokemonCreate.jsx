@@ -29,7 +29,7 @@ const stats = {
     min: 1,
     max: 100,
   },
-  heigth: {
+  height: {
     min: 1,
     max: 300,
   },
@@ -44,7 +44,7 @@ const placeholder = {
   attack: `${stats.attack.min}-${stats.attack.max} `,
   defense: `${stats.defense.min}-${stats.defense.max} `,
   speed: `${stats.speed.min}-${stats.speed.max} `,
-  heigth: `${stats.heigth.min}-${stats.heigth.max} `,
+  height: `${stats.height.min}-${stats.height.max} `,
   weight: `${stats.weight.min}-${stats.weight.max} `,
   image: `https://web/img.jpg`,
 };
@@ -78,8 +78,8 @@ function validate(input) {
   if (input.speed < stats.speed.min || input.speed > stats.speed.max) {
     error.speed = `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`;
   }
-  if (input.heigth < stats.heigth.min || input.heigth > stats.heigth.max) {
-    error.heigth = `HEIGTH debe ser entre ${stats.heigth.min} - ${stats.heigth.max}`;
+  if (input.height < stats.height.min || input.height > stats.height.max) {
+    error.height = `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`;
   }
   if (input.weight < stats.weight.min || input.weight > stats.weight.max) {
     error.weight = `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`;
@@ -102,7 +102,7 @@ export default function PokemonCreate() {
     attack: `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`,
     defense: `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`,
     speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
-    heigth: `HEIGTH debe ser entre ${stats.heigth.min} - ${stats.heigth.max}`,
+    height: `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`,
     weight: `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`,
     image: "",
   });
@@ -113,7 +113,7 @@ export default function PokemonCreate() {
     attack: "",
     defense: "",
     speed: "",
-    heigth: "",
+    height: "",
     weight: "",
     image: "",
   });
@@ -156,7 +156,7 @@ export default function PokemonCreate() {
         attack: "",
         defense: "",
         speed: "",
-        heigth: "",
+        height: "",
         weight: "",
         image: "",
       });
@@ -168,7 +168,7 @@ export default function PokemonCreate() {
         attack: `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`,
         defense: `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`,
         speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
-        heigth: `HEIGTH debe ser entre ${stats.heigth.min} - ${stats.heigth.max}`,
+        height: `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`,
         weight: `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`,
         image: "",
       });
@@ -182,7 +182,7 @@ export default function PokemonCreate() {
         attack: input.attack,
         defense: input.defense,
         speed: input.speed,
-        heigth: input.heigth,
+        height: input.height,
         weight: input.weight,
         image: input.image,
       });
@@ -194,7 +194,7 @@ export default function PokemonCreate() {
         attack: error.attack,
         defense: error.defense,
         speed: error.speed,
-        heigth: error.heigth,
+        height: error.height,
         weight: error.weight,
         image: error.image,
       });
@@ -353,17 +353,17 @@ export default function PokemonCreate() {
               </div>
 
               <div className={style.data}>
-                <label> Heigth </label>
+                <label> Height </label>
                 <div>
                   <input
                     className={
-                      !error.heigth ? style.inputCreate : style.inputCreateError
+                      !error.height ? style.inputCreate : style.inputCreateError
                     }
                     onChange={(e) => handleChange(e)}
-                    value={input.heigth}
+                    value={input.height}
                     type="number"
-                    name="heigth"
-                    placeholder={placeholder.heigth}
+                    name="height"
+                    placeholder={placeholder.height}
                   />
                 </div>
               </div>
@@ -405,7 +405,7 @@ export default function PokemonCreate() {
             !error.attack &&
             !error.defense &&
             !error.speed &&
-            !error.heigth &&
+            !error.height &&
             !error.weight &&
             !error.image ? (
               <button className={globalStyle.eightbitbtn} type="submit">
@@ -422,7 +422,7 @@ export default function PokemonCreate() {
           {error.attack && <p className={style.error}>{error.attack}</p>}
           {error.defense && <p className={style.error}>{error.defense}</p>}
           {error.speed && <p className={style.error}>{error.speed}</p>}
-          {error.heigth && <p className={style.error}>{error.heigth}</p>}
+          {error.height && <p className={style.error}>{error.height}</p>}
           {error.weight && <p className={style.error}>{error.weight}</p>}
           {error.image && <p className={style.error}>{error.image}</p>}
 
@@ -431,7 +431,7 @@ export default function PokemonCreate() {
           !error.attack &&
           !error.defense &&
           !error.speed &&
-          !error.heigth &&
+          !error.height &&
           !error.weight &&
           !error.image ? (
             <h3 className={style.success}>YA PUEDES CREAR EL PERSONAJE</h3>

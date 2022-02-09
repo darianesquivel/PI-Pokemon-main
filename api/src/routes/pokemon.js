@@ -77,6 +77,19 @@ router.post("/", async (req, res, next) => {
       createInDb,
     } = req.body;
 
+    console.log(
+      "llego al post",
+      name,
+      types,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+      createInDb
+    );
     let allPokemons = await getAllPokemons();
 
     let repeatPokemon = allPokemons.filter(
