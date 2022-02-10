@@ -39,6 +39,10 @@ const stats = {
   },
 };
 
+//**************************
+//**     PLACEHOLDERS     **
+//**************************
+
 const placeholder = {
   hp: `${stats.hp.min}-${stats.hp.max} `,
   attack: `${stats.attack.min}-${stats.attack.max} `,
@@ -49,61 +53,68 @@ const placeholder = {
   image: `https://web/img.jpg`,
 };
 
-//*******************
-//**     STATS     **
-//*******************
+//******************************************
+//**          REGULAR EXPRESSION          **
+//******************************************
 
 let regularUrl = /^(ftp|http|https):\/\/[^ "]+$/;
+let regularName = /^[a-z]+$/i;
+let regularNum = /^([0-9])*$/;
+
+//***************************************
+//**          VALIDATION FORM          **
+//***************************************
 
 function validate(input) {
   let error = {};
 
-  if (input.name.length < 3 || input.name.length > 10) {
-    error.name = `NOMBRE debe contener entre 3-10 caracteres`;
+  if (
+    !regularName.test(input.name) ||
+    input.name.length < 3 ||
+    input.name.length > 10
+  ) {
+    error.name = `NAME is required and must contain between 3 and 10 characters`;
   }
-  // if (input.types.length < 0) {
-  //   error.types = "TYPES debe tener al menos 1";
-  // }
-
+  if (input.types.length < 0 || input.types.length > 2) {
+    error.types = "TYPES is required max 2 types";
+  }
   if (input.hp < stats.hp.min || input.hp > stats.hp.max) {
-    error.hp = `HP debe ser entre ${stats.hp.min} - ${stats.hp.max} caracteres`;
+    error.hp = `HP is required and must be a number between ${stats.hp.min} - ${stats.hp.max}`;
   }
-
   if (input.attack < stats.attack.min || input.attack > stats.attack.max) {
-    error.attack = `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`;
+    error.attack = `ATTACK is required and must be a number between ${stats.attack.min} - ${stats.attack.max}`;
   }
   if (input.defense < stats.defense.min || input.defense > stats.defense.max) {
-    error.defense = `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`;
+    error.defense = `DEFENSE is required and must be a number between ${stats.defense.min} - ${stats.defense.max}`;
   }
   if (input.speed < stats.speed.min || input.speed > stats.speed.max) {
-    error.speed = `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`;
+    error.speed = `SPEED is required and must be a number between ${stats.speed.min} - ${stats.speed.max}`;
   }
   if (input.height < stats.height.min || input.height > stats.height.max) {
-    error.height = `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`;
+    error.height = `HEIGHT is required and must be a number between ${stats.height.min} - ${stats.height.max}`;
   }
   if (input.weight < stats.weight.min || input.weight > stats.weight.max) {
-    error.weight = `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`;
+    error.weight = `WEIGTH is required and must be a number between ${stats.weight.min} - ${stats.weight.max}`;
   }
   if (input.image.length > 0 && !regularUrl.test(input.image)) {
-    error.image = "IMAGE debe ser una URL";
+    error.image = "IMAGE must be a valid URL";
   }
   return error;
 }
 
 export default function PokemonCreate() {
   const dispatch = useDispatch();
-  // const history = useHistory();
   const types = useSelector((state) => state.allTypes);
   const allPokemons = useSelector((state) => state.pokemons);
   const [error, setError] = useState({
-    name: "NOMBRE debe contener entre 3-10 caracteres",
-    //types: "TYPES debe tener al menos 1",
-    hp: `HP debe ser entre ${stats.hp.min} - ${stats.hp.max}`,
-    attack: `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`,
-    defense: `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`,
-    speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
-    height: `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`,
-    weight: `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`,
+    name: "NAME is required and must contain between 3 and 10 characters",
+    types: "TYPES is required max 2 types",
+    hp: `HP is required and must be a number between ${stats.hp.min} - ${stats.hp.max}`,
+    attack: `ATTACK is required and must be a number between ${stats.attack.min} - ${stats.attack.max}`,
+    defense: `DEFENSE is required and must be a number between ${stats.defense.min} - ${stats.defense.max}`,
+    speed: `SPEED is required and must be a number between ${stats.speed.min} - ${stats.speed.max}`,
+    height: `HEIGHT is required and must be a number between ${stats.height.min} - ${stats.height.max}`,
+    weight: `WEIGTH is required and must be a number between ${stats.weight.min} - ${stats.weight.max}`,
     image: "",
   });
   const [input, setInput] = useState({
@@ -132,12 +143,18 @@ export default function PokemonCreate() {
   }
 
   function handleSelect(e) {
-    if (input.types.indexOf(e.target.value) === -1) {
+    if (input.types.indexOf(e.target.value) === -1 && input.types.length < 2) {
       setInput({
         ...input,
         types: [...input.types, e.target.value],
       });
     }
+    setError(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
   }
 
   function handleSubmit(e) {
@@ -162,14 +179,14 @@ export default function PokemonCreate() {
       });
 
       setError({
-        name: "NOMBRE debe contener entre 3-10 caracteres",
-        //types: "TYPES debe tener al menos 1",
-        hp: `HP debe ser entre ${stats.hp.min} - ${stats.hp.max} caracteres`,
-        attack: `ATTACK debe ser entre ${stats.attack.min} - ${stats.attack.max}`,
-        defense: `DEFENSE debe ser entre ${stats.defense.min} - ${stats.defense.max}`,
-        speed: `SPEED debe ser entre ${stats.speed.min} - ${stats.speed.max}`,
-        height: `HEIGHT debe ser entre ${stats.height.min} - ${stats.height.max}`,
-        weight: `WEIGTH debe ser entre ${stats.weight.min} - ${stats.weight.max}`,
+        name: "NAME is required and must contain between 3 and 10 characters",
+        types: "TYPES is required max 2 types",
+        hp: `HP is required and must be a number between ${stats.hp.min} - ${stats.hp.max}`,
+        attack: `ATTACK is required and must be a number between ${stats.attack.min} - ${stats.attack.max}`,
+        defense: `DEFENSE is required and must be a number betwee ${stats.defense.min} - ${stats.defense.max}`,
+        speed: `SPEED is required and must be a number between ${stats.speed.min} - ${stats.speed.max}`,
+        height: `HEIGHT is required and must be a number between ${stats.height.min} - ${stats.height.max}`,
+        weight: `WEIGTH is required and must be a number between ${stats.weight.min} - ${stats.weight.max}`,
         image: "",
       });
     } else {
@@ -188,8 +205,8 @@ export default function PokemonCreate() {
       });
 
       setError({
-        name: "NOMBRE EXISTENTE",
-        // types: error.types,
+        name: "NAME already exist",
+        types: error.types,
         hp: error.hp,
         attack: error.attack,
         defense: error.defense,
@@ -209,6 +226,15 @@ export default function PokemonCreate() {
       ...input,
       types: input.types.filter((t) => t !== ty),
     });
+
+    if (input.types.length === 1) {
+      setError(
+        validate({
+          ...input,
+          types: "TYPES is required max 2 types",
+        })
+      );
+    }
   }
 
   useEffect(() => {
@@ -222,16 +248,16 @@ export default function PokemonCreate() {
     );
 
     if (repeat.length > 0) {
-      return "Pokemon existente";
+      return "Pokemon already exist";
     }
   }
 
   return (
     <div className={style.createContainer}>
       <Link to="/home">
-        <button className={globalStyle.eightbitbtn}>volver</button>
+        <button className={globalStyle.eightbitbtn}>BACK</button>
       </Link>
-      <h1>CREA TU POKEMON</h1>
+      <h1>CREATE YOUR POKEMON</h1>
       <div className={style.formErrorContainer}>
         <div className={style.formContainer}>
           <form
@@ -240,7 +266,7 @@ export default function PokemonCreate() {
             action=""
           >
             <div className={style.data}>
-              <label> Nombre </label>
+              <label> Name </label>
 
               <input
                 className={
@@ -270,7 +296,11 @@ export default function PokemonCreate() {
                   </option>
                 ))}
               </select>
-              <div className={style.typeContainer}>
+              <div
+                className={
+                  !error.types ? style.typeContainer : style.typeContainerError
+                }
+              >
                 {input.types.map((ty, index) => (
                   <div key={index} className={style.types}>
                     <p className={style.typeName}>{ty}</p>
@@ -401,6 +431,7 @@ export default function PokemonCreate() {
             </div>
 
             {!error.name &&
+            !error.types &&
             !error.hp &&
             !error.attack &&
             !error.defense &&
@@ -409,7 +440,7 @@ export default function PokemonCreate() {
             !error.weight &&
             !error.image ? (
               <button className={globalStyle.eightbitbtn} type="submit">
-                Crear personaje
+                Create pokemon
               </button>
             ) : (
               ""
@@ -418,6 +449,7 @@ export default function PokemonCreate() {
         </div>
         <div className={style.errorContainer}>
           {error.name && <p className={style.error}>{error.name}</p>}
+          {error.types && <p className={style.error}>{error.types}</p>}
           {error.hp && <p className={style.error}>{error.hp}</p>}
           {error.attack && <p className={style.error}>{error.attack}</p>}
           {error.defense && <p className={style.error}>{error.defense}</p>}
@@ -427,6 +459,7 @@ export default function PokemonCreate() {
           {error.image && <p className={style.error}>{error.image}</p>}
 
           {!error.name &&
+          !error.types &&
           !error.hp &&
           !error.attack &&
           !error.defense &&
@@ -434,9 +467,9 @@ export default function PokemonCreate() {
           !error.height &&
           !error.weight &&
           !error.image ? (
-            <h3 className={style.success}>YA PUEDES CREAR EL PERSONAJE</h3>
+            <h3 className={style.success}>YOU CAN CREATE THE CHARACTER</h3>
           ) : (
-            <h2 className={style.error}>HAY DATOS CON ERRORES</h2>
+            <h2 className={style.error}>DATA ERROR</h2>
           )}
         </div>
       </div>

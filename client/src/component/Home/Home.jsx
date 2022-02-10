@@ -18,55 +18,52 @@ import Paginado from "../Paginado/Paginado";
 import Footer from "../Footer/Footer";
 import gif from "./pokemonnotfound.gif";
 import imgUn from "./pokemonUnknow.svg";
-import globalStyle from "../globalStyle.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allPokemons = useSelector((state) => state.pokemons);
+  let allPokemons = useSelector((state) => state.pokemons);
   const allPokemonsFilter = useSelector((state) => state.filter);
   const [order, setOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage, setPokemonPerPage] = useState(12);
   const lastPokemon = currentPage * pokemonsPerPage;
   const firstPokemon = lastPokemon - pokemonsPerPage;
-  const currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
+  let currentPokemons = allPokemons.slice(firstPokemon, lastPokemon);
 
-  //*************************************************************************
-  // ***** PARA TRAER TODOS LOS TYPES DE LOS 40 POKEMON QUE TRAE LA API + DB
-  //*************************************************************************
+  // ********************************************************************
+  // **          TYPES DE LOS 40 POKEMONS API + BASE DE DATOS          **
+  // ********************************************************************
 
   const objType = allPokemonsFilter.map((p) => p.types);
   const ArrType = [];
   objType.map((e) => e.forEach((l) => ArrType.push(l.name ? l.name : l)));
   const types = [...new Set(ArrType)];
 
-  //*************************************************************************
-  //*************************************************************************
-
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // ********************************
+  // **          USE EFFECT        **
+  // ********************************
 
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
   }, [dispatch]);
 
-  function handleClick(e) {
-    e.preventDefault();
-    dispatch(getPokemons());
-  }
+  // ********************************
+  // **          HANDLERS          **
+  // ********************************
 
   function handleFilterType(e) {
     e.preventDefault();
-
     dispatch(filterPokemonsByType(e.target.value));
     setCurrentPage(1);
   }
 
   function handleFilterCreated(e) {
     e.preventDefault();
-
     dispatch(filterCreated(e.target.value));
     setCurrentPage(1);
   }
@@ -89,7 +86,6 @@ export default function Home() {
     <div className={style.homeContainer}>
       <h1> 8-BIT POKEMON API </h1>
       <NavBar />
-
       <div>
         <div>
           <select
@@ -113,10 +109,10 @@ export default function Home() {
             className={style.select}
           >
             <option className={style.optionSelect} value="fuerza-">
-              Fuerza -
+              Attack -
             </option>
             <option className={style.optionSelect} value="fuerza+">
-              Fuerza +
+              Attack +
             </option>
           </select>
 
@@ -127,16 +123,15 @@ export default function Home() {
             className={style.select}
           >
             <option className={style.optionSelect} value="all">
-              Todos
+              All
             </option>
             <option className={style.optionSelect} value="api">
-              Existente
+              Pokedex
             </option>
             <option className={style.optionSelect} value="created">
-              Creado
+              Created
             </option>
           </select>
-
           <select
             onChange={(e) => {
               handleFilterType(e);
@@ -144,7 +139,7 @@ export default function Home() {
             className={style.select}
           >
             <option value="all" className={style.optionSelect}>
-              Todos
+              All
             </option>
 
             {types?.map((t) => (
@@ -162,49 +157,34 @@ export default function Home() {
         paginado={paginado}
       />
 
-      {console.log("ROMPE SI NO ENCUENTRA PERSONAJE ", currentPokemons)}
-
       <div className={style.cardsContainer}>
-        {
-          currentPokemons === "not found" ? (
-            <div>
-              <img src={gif} alt="" width="100px" />
-              <h2>POKEMON NOT FOUND</h2>
-              <button
-                onClick={(e) => handleClick(e)}
-                className={globalStyle.eightbitbtn}
-                type="submit"
-              >
-                Recargar
-              </button>
-            </div>
-          ) : // <---
-
-          currentPokemons.length < 1 ? (
-            <div>
-              {" "}
-              <Loading />{" "}
-            </div>
-          ) : (
-            // -----------------------------------------------------------------
-            currentPokemons?.map((p, i) => {
-              return (
-                <div>
-                  <Link className={style.link} to={`/pokemon/${p.id}`}>
-                    <Card
-                      key={i}
-                      name={p.name}
-                      image={p.image ? p.image : imgUn}
-                      types={p.types}
-                      attack={p.attack}
-                    />
-                  </Link>
-                </div>
-              );
-            })
-          ) // <---
-          // -----------------------------------------------------------------
-        }
+        {currentPokemons === "not found" ? (
+          <div>
+            <img src={gif} alt="" width="200px" />
+            <h2>POKEMON NOT FOUND</h2>
+          </div>
+        ) : currentPokemons.length < 1 ? (
+          <div>
+            {" "}
+            <Loading />{" "}
+          </div>
+        ) : (
+          currentPokemons?.map((p, i) => {
+            return (
+              <div>
+                <Link className={style.link} to={`/pokemon/${p.id}`}>
+                  <Card
+                    key={i}
+                    name={p.name}
+                    image={p.image ? p.image : imgUn}
+                    types={p.types}
+                    attack={p.attack}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        )}
       </div>
       <Paginado
         pokemonsPerPage={pokemonsPerPage}

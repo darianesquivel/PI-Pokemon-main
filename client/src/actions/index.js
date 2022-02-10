@@ -106,3 +106,10 @@ export function clearDetail() {
     payload: [],
   };
 }
+
+// export function clearStatePokemon() {
+//   return {
+//     type: "CLEAR_STATE_POKEMON",
+//     payload: [],
+//   };
+// }

@@ -30,7 +30,7 @@ function rootReducer(state = initialState, action) {
                 (t) => t === action.payload || t.name === action.payload
               )
             );
-      console.log("soy typeFiltered", typeFiltered);
+
       return {
         ...state,
         pokemons: typeFiltered,
@@ -84,7 +84,7 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             });
-      console.log("ORDER BY NAME", orderPokemonByName);
+
       return {
         ...state,
         pokemons: orderPokemonByName,
@@ -118,7 +118,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "SEARCH_BY_NAME":
-      console.log("SOY EL ACTION PAYLOAD", action.payload);
       return {
         ...state,
         pokemons: action.payload,
@@ -130,7 +129,6 @@ function rootReducer(state = initialState, action) {
       };
 
     case "GET_DETAIL":
-      console.log("EL POKEMON LLEGO AL REDUCER ", action.payload);
       return {
         ...state,
         detail: action.payload,
@@ -141,6 +139,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
+
+    // case "CLEAR_STATE_POKEMON":
+    //   return {
+    //     ...state,
+    //     allPokemons: [],
+    //   };
 
     default:
       return state;

@@ -6,7 +6,7 @@ import gif2 from "./fondopokemons.gif";
 import globalStyle from "../globalStyle.module.css";
 import Footer from "../Footer/Footer";
 
-const cta = "< ingresar >";
+const cta = "< START >";
 
 export default function LandingPage() {
   return (
