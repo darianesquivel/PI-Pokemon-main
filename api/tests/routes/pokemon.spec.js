@@ -20,7 +20,10 @@ describe("Pokemon routes", () => {
   );
 
   describe("GET /pokemons", () => {
-    it("should get 200", () => agent.get("/pokemons").expect(200));
+    it("GET /pokemons should get 200", (done) => {
+      agent.get("/pokemons").expect(200);
+      done();
+    });
   });
 
   describe("POST /pokemons", () => {
