@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import style from "./Footer.module.css";
-
 import gif2 from "./bulbasaur.gif";
-import globalStyle from "../globalStyle.module.css";
 import imgGithub from "./imgGit.png";
 import imgFace from "./imgFace.png";
 import imgInsta from "./imgInsta.png";

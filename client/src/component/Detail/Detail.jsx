@@ -15,11 +15,11 @@ import imgDefense from "./def.svg";
 import imgHeight from "./height.svg";
 import imgWeight from "./weight.svg";
 import imgSpeed from "./speed.svg";
+// import { deletePokemon } from "../../actions";
 
 export default function Detail() {
   const dispatch = useDispatch();
   let { id } = useParams();
-  console.log("soy params", id);
 
   useEffect(() => {
     dispatch(getDetail(id));
@@ -28,9 +28,18 @@ export default function Detail() {
   const detailPokemon = useSelector((state) => state.detail);
 
   useEffect(() => {
-    console.log("ejecuto el clear");
     dispatch(clearDetail());
   }, [dispatch]);
+
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   const sure = window.confirm(
+  //     "Are you sure you want to delete your pokemon?"
+  //   );
+  //   if (sure) {
+  //     dispatch(deletePokemon(id));
+  //   }
+  // }
 
   console.log("detailpokemon", detailPokemon);
   return (
@@ -52,8 +61,10 @@ export default function Detail() {
               <h1>{detailPokemon.name}</h1>
               <h4 className={style.tittle}>TYPES</h4>
               <div className={style.typContainer}>
-                {detailPokemon.types.map((p) => (
-                  <h4 className={style.type}>{p}</h4>
+                {detailPokemon.types.map((p, index) => (
+                  <h4 key={index} className={style.type}>
+                    {p}
+                  </h4>
                 ))}
               </div>
             </div>
@@ -90,6 +101,9 @@ export default function Detail() {
               </div>
             </div>
           </div>
+          {/* <button type="submit" onClick={(e) => handleClick(e)}>
+            DELETE
+          </button> */}
         </div>
       )}
       <Footer />

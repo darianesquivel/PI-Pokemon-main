@@ -142,8 +142,8 @@ export default function Home() {
               All
             </option>
 
-            {types?.map((t) => (
-              <option value={t} className={style.optionSelect}>
+            {types?.map((t, index) => (
+              <option key={index} value={t} className={style.optionSelect}>
                 {t}
               </option>
             ))}
@@ -169,12 +169,16 @@ export default function Home() {
             <Loading />{" "}
           </div>
         ) : (
-          currentPokemons?.map((p, i) => {
+          currentPokemons?.map((p, index) => {
             return (
-              <div>
-                <Link className={style.link} to={`/pokemon/${p.id}`}>
+              <div key={index}>
+                <Link
+                  key={index}
+                  className={style.link}
+                  to={`/pokemon/${p.id}`}
+                >
                   <Card
-                    key={i}
+                    key={index}
                     name={p.name}
                     image={p.image ? p.image : imgUn}
                     types={p.types}

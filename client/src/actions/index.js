@@ -89,7 +89,7 @@ export function getDetail(id) {
       var pokemonDetail = await axios.get(
         `http://localhost:3001/pokemon/${id}`
       );
-      console.log("EL POKEMON LLEGO A ACTIONS ", pokemonDetail.data);
+
       return dispatch({
         type: "GET_DETAIL",
         payload: pokemonDetail.data,
@@ -106,6 +106,23 @@ export function clearDetail() {
     payload: [],
   };
 }
+
+// export const deletePokemon = async (id) => {
+//   return async function (dispatch) {
+//     try {
+//       const { data } = await axios.delete(
+//         `http://localhost:3001/pokemon/${id}`
+//       );
+
+//       return dispatch({
+//         type: "DELETE_POKEMON",
+//         payload: data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
 // export function clearStatePokemon() {
 //   return {

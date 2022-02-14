@@ -78,22 +78,46 @@ function validate(input) {
   if (input.types.length < 0 || input.types.length > 2) {
     error.types = "TYPES is required max 2 types";
   }
-  if (input.hp < stats.hp.min || input.hp > stats.hp.max) {
+  if (
+    !regularNum.test(input.hp) ||
+    input.hp < stats.hp.min ||
+    input.hp > stats.hp.max
+  ) {
     error.hp = `HP is required and must be a number between ${stats.hp.min} - ${stats.hp.max}`;
   }
-  if (input.attack < stats.attack.min || input.attack > stats.attack.max) {
+  if (
+    !regularNum.test(input.attack) ||
+    input.attack < stats.attack.min ||
+    input.attack > stats.attack.max
+  ) {
     error.attack = `ATTACK is required and must be a number between ${stats.attack.min} - ${stats.attack.max}`;
   }
-  if (input.defense < stats.defense.min || input.defense > stats.defense.max) {
+  if (
+    !regularNum.test(input.defense) ||
+    input.defense < stats.defense.min ||
+    input.defense > stats.defense.max
+  ) {
     error.defense = `DEFENSE is required and must be a number between ${stats.defense.min} - ${stats.defense.max}`;
   }
-  if (input.speed < stats.speed.min || input.speed > stats.speed.max) {
+  if (
+    !regularNum.test(input.speed) ||
+    input.speed < stats.speed.min ||
+    input.speed > stats.speed.max
+  ) {
     error.speed = `SPEED is required and must be a number between ${stats.speed.min} - ${stats.speed.max}`;
   }
-  if (input.height < stats.height.min || input.height > stats.height.max) {
+  if (
+    !regularNum.test(input.height) ||
+    input.height < stats.height.min ||
+    input.height > stats.height.max
+  ) {
     error.height = `HEIGHT is required and must be a number between ${stats.height.min} - ${stats.height.max}`;
   }
-  if (input.weight < stats.weight.min || input.weight > stats.weight.max) {
+  if (
+    !regularNum.test(input.weight) ||
+    input.weight < stats.weight.min ||
+    input.weight > stats.weight.max
+  ) {
     error.weight = `WEIGTH is required and must be a number between ${stats.weight.min} - ${stats.weight.max}`;
   }
   if (input.image.length > 0 && !regularUrl.test(input.image)) {

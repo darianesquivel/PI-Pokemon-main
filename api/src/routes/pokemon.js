@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
   const name = req.query.name;
   if (!name) {
     const allPokemon = await getAllPokemons();
-    res.send(allPokemon);
+    res.status(200).send(allPokemon);
   } else {
     let pokemonDb = await getPokemonByNameDb2(name);
     let pokemonApi = await getPokemonByNameApi(name);
@@ -32,9 +32,9 @@ router.get("/", async (req, res, next) => {
     }
 
     if (pokemonByName.length > 0) {
-      res.send(pokemonByName);
+      res.status(200).send(pokemonByName);
     } else {
-      res.send("not found");
+      res.status(404).send("not found");
     }
   }
 });
@@ -77,19 +77,6 @@ router.post("/", async (req, res, next) => {
       createInDb,
     } = req.body;
 
-    console.log(
-      "llego al post",
-      name,
-      types,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
-      image,
-      createInDb
-    );
     let allPokemons = await getAllPokemons();
 
     let repeatPokemon = allPokemons.filter(
@@ -123,9 +110,27 @@ router.post("/", async (req, res, next) => {
       res.status(200).send("Pokemon agregado con exito");
     }
   } catch (error) {
-    console.log("soy el error de post", error);
     res.status(404).send("No se pudo agregar pokemon");
   }
 });
+
+//************************************
+//**          DELETE POKEMO         **
+//************************************
+// router.delete("/:id", async (req, res, next) => {
+//   const { id } = req.params;
+//   try {
+//     const deletePokemon = await Pokemon.findOne({
+//       where: { id: id },
+//     });
+
+//     if (deletePokemon) {
+//       await deletePokemon.destroy();
+//       return res.json({ message: "Pokemon deleted" });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 module.exports = router;
