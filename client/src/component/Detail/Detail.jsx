@@ -48,9 +48,6 @@ export default function Detail() {
         <Loading />
       ) : (
         <div className={style.detailContainer}>
-          <Link to="/home">
-            <button className={globalStyle.eightbitbtn}>volver</button>
-          </Link>
           <div className={style.subContainers}>
             <div className={style.imgNameTypeContainer}>
               <img
@@ -101,11 +98,15 @@ export default function Detail() {
               </div>
             </div>
           </div>
+          <Link to="/home">
+            <button className={globalStyle.eightbitbtn}>volver</button>
+          </Link>
           {/* <button type="submit" onClick={(e) => handleClick(e)}>
             DELETE
           </button> */}
         </div>
       )}
+
       <Footer />
     </div>
   );

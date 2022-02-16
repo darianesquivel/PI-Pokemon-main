@@ -118,6 +118,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case "SEARCH_BY_NAME":
+      console.log("llega al reducer");
       return {
         ...state,
         pokemons: action.payload,

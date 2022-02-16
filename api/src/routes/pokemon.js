@@ -14,11 +14,13 @@ const router = Router();
 //*****************************************
 
 router.get("/", async (req, res, next) => {
+  console.log("llega a get");
   const name = req.query.name;
   if (!name) {
     const allPokemon = await getAllPokemons();
     res.status(200).send(allPokemon);
   } else {
+    console.log("llega a buscar el pokemon");
     let pokemonDb = await getPokemonByNameDb2(name);
     let pokemonApi = await getPokemonByNameApi(name);
 
@@ -32,9 +34,12 @@ router.get("/", async (req, res, next) => {
     }
 
     if (pokemonByName.length > 0) {
+      console.log("llega a buscar el pokemon");
       res.status(200).send(pokemonByName);
     } else {
-      res.status(404).send("not found");
+      console.log("entro al else de buscar o sea no encontro ninguno");
+      res.send("not found");
+      return "not found";
     }
   }
 });

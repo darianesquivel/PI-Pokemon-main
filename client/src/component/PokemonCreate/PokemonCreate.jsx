@@ -467,7 +467,13 @@ export default function PokemonCreate() {
                 Create pokemon
               </button>
             ) : (
-              ""
+              <button
+                className={globalStyle.eightbitbtn2}
+                type="submit"
+                disabled
+              >
+                Create pokemon
+              </button>
             )}
           </form>
         </div>

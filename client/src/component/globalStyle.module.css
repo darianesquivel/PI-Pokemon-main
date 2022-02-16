@@ -11,6 +11,7 @@
   color: white;
   box-shadow: inset -4px -4px 0px 0px #4aa52e;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .eightbitbtn:hover {
